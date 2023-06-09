@@ -1,113 +1,190 @@
-import Image from 'next/image'
-
+"use client";
+import Category from "@/components/Category";
+import Hardship from "@/components/Hardship";
+import MainNavigation from "@/components/MainNavigation";
+import axios from "axios";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {ChevronDoubleDownIcon  } from "@heroicons/react/24/solid";
 export default function Home() {
+
+  const [selected, setSelected] = useState({
+    categoryId: "648343164bc83c8d3dbfe5a9",
+    hardshipId: "648343524bc83c8d3dbfe5bf",
+  });
+
+  const [categoryValues, setCategoryValues] = useState([]);
+  const [hardshipValues, setHardshipValues] = useState([]);
+  const [sentence, setSentence] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Code here will only run on the client side
+
+      const fetchData = async () => {
+        try {
+          const resCategory = await axios.get(
+            "http://localhost:2000/category/all"
+          );
+          const resHardship = await axios.get(
+            "http://localhost:2000/hardship/all"
+          );
+          const category = resCategory.data;
+          const hardship = resHardship.data;
+          setCategoryValues(category.data.category);
+          setHardshipValues(hardship.data.hardship);
+          console.log(categoryValues, hardshipValues);
+        } catch (error) {
+          console.error("Error fetching categories:", error);
+        }
+      };
+
+      fetchData();
+    }
+  }, []);
+
+  const handleCategoryChange = (e) => {
+    setSelected({ ...selected, categoryId: e.target.value });
+  };
+
+  const handleHardshipChange = (e) => {
+    setSelected({ ...selected, hardshipId: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:2000/sentence/random",
+        selected
+      );
+
+      setSentence(response.data.data.result.text);
+      // Handle successful response
+    } catch (error) {
+      // Handle error
+      toast(error.response.data.errors.message);
+    }
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div className="bt-24 shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16">
+        <div className="flex flex-col lg:flex-row">
+          <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6">
+            <div>
+              <p className="block text-3xl font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
+                سوال، کلمه و موضوع
+              </p>
+              <p className="block pt-5 text-3xl font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
+                پانتومیم جالب و سرگرم کننده
+                <br />
+              </p>
+              <p
+                className="block pt-5 text-blue-700 text-3xl font-bold tracking-tight  sm:text-4xl
+              sm:leading-none"
+              >
+                پیدا کن
+              </p>
+            </div>
+          </div>
+          <div className="lg:w-1/2">
+            <p className="mb-4 text-lg text-right text-gray-700">
+              پانتومیم یکی از بازی های جالب برای دورهمی ها است. جملات و کلمات
+              موضوع اصلی پانتومیم هستند و یکی از روش های خوب برای افزایش خلاقیت
+              میان افراد است. در ایران به پانتومیم، لال بازی هم می گویند و یک
+              بازی شادی بخش است که بین دو گروه و یا دو نفر قابل انجام است و با
+              استفاده از کلمات و ضرب المثل ها می توانید این بازی را انجام دهید.
+            </p>
+            <a
+              className="w-3/12 text-blue-700 text-center flex font-semibold items-center transition-colors duration-200
+            hover:text-blue-900"
+            >
+              بیشتر بخوانید
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div
+        className="bg-white  pt-16 pr-4 pb-16 pl-4 mr-auto ml-auto flex flex-col items-center relative lg:flex-row lg:py-5
+    xl:py-4 md:px-2"
+      >
+        <div
+          className=" flex justify-center items-center w-full h-full lg:w-1/2 lg:justify-end lg:bottom-0 lg:left-0
+      lg:items-center"
+        >
+          <div className="md:max-w-md px-4 md:px-20 mx-auto">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+              <label className="block text-center mb-10 mt-10 text-2xl  font-medium text-gray-900 dark:text-gray-900">
+                هر چی که میخوای انتخاب کن
+              </label>
+
+              <label className="block text-center text-xl mb-2  font-medium text-gray-900 dark:text-gray-900">
+                کلمه باشه؟ ضرب المثل؟ یا چی؟
+              </label>
+              <select
+                id="category"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                value={selected.categoryId}
+                onChange={handleCategoryChange}
+              >
+                {categoryValues.map((c) => (
+                  <option key={c._id} value={c._id}>
+                    {c.title}
+                  </option>
+                ))}
+              </select>
+              <label className="block text-center text-xl mb-2  font-medium text-gray-900 dark:text-black">
+                سخت باشه؟ یا آسون؟
+              </label>
+              <select
+                id="hardship"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                value={selected.hardshipId}
+                onChange={handleHardshipChange}
+              >
+                {hardshipValues.map((h) => (
+                  <option key={h._id} value={h._id}>
+                    {h.title}
+                  </option>
+                ))}
+              </select>
+              <button className="w-full py-2 rounded-lg bg-amber-500 text-white hover:scale-110		">
+                ارسال
+              </button>
+            </form>
+
+            <div className="text-red-500  mt-10 text-3xl rounded-lg border-2  h-60  border-amber-500 justify-center flex items-center">
+            
+              <p className="text-gray-900 "> {sentence ? sentence : "دکمه ارسال رو بزن"} </p>
+            </div>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+          </div>
+        </div>
+        <div className="mr-auto ml-auto flex justify-end relative max-w-xl xl:pr-10 lg:max-w-screen-xl">
+          <img
+            alt="Picture of the author"
+            src="/images/2.jpg"
+            className="object-contain object-top btn- w-full h-auto lg:w-auto
+        lg:h-full"
+          />
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </div>
+  );
 }

@@ -45,15 +45,15 @@ export default function Home() {
     }
   }, []);
 
-  const handleCategoryChange = (e) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelected({ ...selected, categoryId: e.target.value });
   };
 
-  const handleHardshipChange = (e) => {
+  const handleHardshipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelected({ ...selected, hardshipId: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
 
     try {

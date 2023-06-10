@@ -119,7 +119,7 @@ export default function Home() {
     xl:py-4 md:px-2"
       >
         <div
-          className=" flex justify-center items-center w-full h-full lg:w-1/2 lg:justify-end lg:bottom-0 lg:left-0
+          className="  justify-center items-center w-full h-full lg:w-1/2 lg:justify-end lg:bottom-0 lg:left-0
       lg:items-center"
         >
           <div className="md:max-w-md px-4 md:px-20 mx-auto">
@@ -162,10 +162,8 @@ export default function Home() {
                 ارسال
               </button>
             </form>
-
-            <div className="text-red-500  mt-10 text-3xl rounded-lg border-2  h-60  border-amber-500 justify-center flex items-center">
-              <p className="text-gray-900 ">
-                {" "}
+            <div className="mt-10 container text-center text-2xl rounded-lg border-2  h-60  border-amber-500 justify-center flex items-center">
+              <p className="text-gray-900 leading-relaxed ">
                 {sentence ? sentence : "دکمه ارسال رو بزن"}{" "}
               </p>
             </div>

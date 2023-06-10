@@ -1,22 +1,20 @@
 "use client";
-import Category from "@/components/Category";
-import Hardship from "@/components/Hardship";
+
 import MainNavigation from "@/components/MainNavigation";
 import axios from "axios";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {ChevronDoubleDownIcon  } from "@heroicons/react/24/solid";
+import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
 export default function Home() {
-
   const [selected, setSelected] = useState({
     categoryId: "648343164bc83c8d3dbfe5a9",
     hardshipId: "648343524bc83c8d3dbfe5bf",
   });
 
-  const [categoryValues, setCategoryValues] = useState([]);
-  const [hardshipValues, setHardshipValues] = useState([]);
+  const [categoryValues, setCategoryValues] = useState<any[]>([]);
+  const [hardshipValues, setHardshipValues] = useState<any[]>([]);
   const [sentence, setSentence] = useState("");
 
   useEffect(() => {
@@ -45,17 +43,22 @@ export default function Home() {
     }
   }, []);
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelected({ ...selected, categoryId: e.target.value });
+  const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelected({
+      ...selected,
+      categoryId: event.target.value,
+    });
   };
 
-  const handleHardshipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelected({ ...selected, hardshipId: e.target.value });
+  const handleHardshipChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelected({
+      ...selected,
+      hardshipId: event.target.value,
+    });
   };
 
-  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:2000/sentence/random",
@@ -66,7 +69,9 @@ export default function Home() {
       // Handle successful response
     } catch (error) {
       // Handle error
-      toast(error.response.data.errors.message);
+      // if (error instanceof Error) toast(error?.response?.data?.errors?.message);
+
+      toast("لطفا مجددا تلاش کنید");
     }
   };
 
@@ -159,8 +164,10 @@ export default function Home() {
             </form>
 
             <div className="text-red-500  mt-10 text-3xl rounded-lg border-2  h-60  border-amber-500 justify-center flex items-center">
-            
-              <p className="text-gray-900 "> {sentence ? sentence : "دکمه ارسال رو بزن"} </p>
+              <p className="text-gray-900 ">
+                {" "}
+                {sentence ? sentence : "دکمه ارسال رو بزن"}{" "}
+              </p>
             </div>
             <ToastContainer
               position="top-right"

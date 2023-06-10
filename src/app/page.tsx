@@ -24,10 +24,10 @@ export default function Home() {
       const fetchData = async () => {
         try {
           const resCategory = await axios.get(
-            "http://localhost:2000/category/all"
+            "https://apipantomime.iran.liara.run/category/all"
           );
           const resHardship = await axios.get(
-            "http://localhost:2000/hardship/all"
+            "https://apipantomime.iran.liara.run/hardship/all"
           );
           const category = resCategory.data;
           const hardship = resHardship.data;
@@ -61,7 +61,7 @@ export default function Home() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:2000/sentence/random",
+        "https://apipantomime.iran.liara.run/sentence/random",
         selected
       );
 

@@ -6,18 +6,19 @@ const MainNavigation = () => {
       <nav className="w-full">
         <div className="flex w-full justify-between max-w-screen-2xl md:flex-row mt-auto mr-auto mb-auto ml-auto">
           <div className=" flex-row bg-white justify-between items-center mt-2 mb-2 md:m-0 hidden md:flex">
-            <a
+            <Link
               href="#"
               className="text-gray-600 text-center mr-6 font-medium text-base"
             >
               خانه
-            </a>
-            <a
-              href="#"
+            </Link>
+
+            <Link
+              href="/blogs"
               className="text-gray-600 text-center mr-6 font-medium text-base"
             >
               آموزش ها
-            </a>
+            </Link>
           </div>
           <div className="bg-gray-700 flex-row flex items-center justify-center order-first md:order-none">
             {/* <img
@@ -26,18 +27,13 @@ const MainNavigation = () => {
             /> */}
           </div>
           <div className=" justify-center items-center md:justify-start hidden md:flex">
-            <button
-              className="h-9 w-24 text-gray-600 bg-white border-2 border-white flex items-center justify-center
-            text-center rounded-lg text-lg font-normal mr-6"
+            <Link
+              href={"/auth"}
+              className="h-9 w-45 text-white bg-amber-700 hover:bg-amber-900 hover:border-amber-900 border-2 flex
+            items-center justify-center text-center border-amber-700 rounded-lg text-lg font-normal mr-auto"
             >
-              ورود
-            </button>
-            <button
-              className="h-9 w-24 text-white bg-blue-700 hover:bg-blue-900 hover:border-blue-900 border-2 flex
-            items-center justify-center text-center border-blue-700 rounded-lg text-lg font-normal mr-auto"
-            >
-              ثبت نام
-            </button>
+              ثبت نام/ورود
+            </Link>
           </div>
           <div className="md:hidden flex items-center">
             <div className="outline-none mobile-menu-button">
@@ -61,32 +57,27 @@ const MainNavigation = () => {
         <div className=" md:hidden mobile-menu">
           <div>
             <div className="active">
-              <a
+              <Link
                 href="#"
                 className="text-gray-600 text-center mr-6 mt-2 font-medium text-base"
               >
                 خانه
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-600 text-center mr-6 mt-2 font-medium text-base"
               >
                 آموزش ها
-              </a>
+              </Link>
 
-              <button
-                className="h-9 w-24 text-gray-600 bg-white border-2 border-white flex items-center justify-center
-              text-center rounded-lg text-lg font-normal mt-2 mr-auto ml-auto"
-              >
-                ورود
-              </button>
-              <button
-                className="h-9 w-24 text-white bg-blue-700 hover:bg-blue-900 hover:border-blue-900 border-2 flex
-              items-center justify-center text-center border-blue-700 rounded-lg text-lg font-normal mt-2 mr-auto
+              <Link
+                href="auth"
+                className="h-14 w-24 text-white bg-amber-700 hover:bg-amber-900 hover:border-amber-900 border-2 flex
+              items-center justify-center text-center border-amber-700 rounded-lg text-lg font-normal mt-2 mr-auto
               ml-auto"
               >
-                ثبت نام
-              </button>
+                ثبت نام ورود
+              </Link>
             </div>
           </div>
         </div>

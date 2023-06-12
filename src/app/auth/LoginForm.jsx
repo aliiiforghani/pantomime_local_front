@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 function LoginForm({ setStep }) {
-  const router = useRouter()
+  const router = useRouter();
   const [user, setUser] = useState({
     username: "",
     password: "",

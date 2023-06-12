@@ -26,9 +26,10 @@ export default function Home() {
           );
           const resHardship = await axios.get(
             `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
-          );
-          const category = resCategory.data;
-          const hardship = resHardship.data;
+            );
+            const category = resCategory.data;
+            const hardship = resHardship.data;
+            setHardshipValues(hardship.slice(0.1))
           setCategoryValues(category.data.category);
           setHardshipValues(hardship.data.hardship);
           console.log(categoryValues, hardshipValues);

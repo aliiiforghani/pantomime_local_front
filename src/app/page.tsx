@@ -1,5 +1,5 @@
 "use client";
-
+import "./globals.css";
 import MainNavigation from "@/components/MainNavigation";
 import axios from "axios";
 import Image from "next/image";
@@ -19,15 +19,13 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Code here will only run on the client side
-
       const fetchData = async () => {
         try {
           const resCategory = await axios.get(
-            "https://apipantomime.iran.liara.run/category/all"
+            `${process.env.NEXT_PUBLIC_API_URL}/category/all`
           );
           const resHardship = await axios.get(
-            "https://apipantomime.iran.liara.run/hardship/all"
+            `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
           );
           const category = resCategory.data;
           const hardship = resHardship.data;
@@ -61,7 +59,7 @@ export default function Home() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://apipantomime.iran.liara.run/sentence/random",
+        `${process.env.NEXT_PUBLIC_API_URL}/sentence/random`,
         selected
       );
 

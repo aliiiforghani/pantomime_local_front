@@ -1,7 +1,8 @@
 import MainNavigation from "@/components/MainNavigation";
 import "./globals.css";
 import { Inter } from "next/font/google";
-
+import Providers from "./providers";
+import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,9 +18,10 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body>
+        <Providers>
         <MainNavigation />
-
-        {children}
+        <Toaster />
+          {children}</Providers>
       </body>
     </html>
   );

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const MainNavigation = () => {
   return (
-    <div className="bg-white pt-4 pr-8 pb-4 pl-8">
+    <div className="bg-white shadow-xl pt-4 pr-8 pb-4 pl-8">
       <nav className="w-full">
         <div className="flex w-full justify-between max-w-screen-2xl md:flex-row mt-auto mr-auto mb-auto ml-auto">
           <div className=" flex-row bg-white justify-between items-center mt-2 mb-2 md:m-0 hidden md:flex">
@@ -18,7 +18,6 @@ const MainNavigation = () => {
             >
               آموزش ها
             </a>
-           
           </div>
           <div className="bg-gray-700 flex-row flex items-center justify-center order-first md:order-none">
             {/* <img
@@ -31,7 +30,7 @@ const MainNavigation = () => {
               className="h-9 w-24 text-gray-600 bg-white border-2 border-white flex items-center justify-center
             text-center rounded-lg text-lg font-normal mr-6"
             >
-            ورود
+              ورود
             </button>
             <button
               className="h-9 w-24 text-white bg-blue-700 hover:bg-blue-900 hover:border-blue-900 border-2 flex
@@ -66,27 +65,27 @@ const MainNavigation = () => {
                 href="#"
                 className="text-gray-600 text-center mr-6 mt-2 font-medium text-base"
               >
-            خانه
+                خانه
               </a>
               <a
                 href="#"
                 className="text-gray-600 text-center mr-6 mt-2 font-medium text-base"
               >
-                آموزش ها 
+                آموزش ها
               </a>
-              
+
               <button
                 className="h-9 w-24 text-gray-600 bg-white border-2 border-white flex items-center justify-center
               text-center rounded-lg text-lg font-normal mt-2 mr-auto ml-auto"
               >
-               ورود
+                ورود
               </button>
               <button
                 className="h-9 w-24 text-white bg-blue-700 hover:bg-blue-900 hover:border-blue-900 border-2 flex
               items-center justify-center text-center border-blue-700 rounded-lg text-lg font-normal mt-2 mr-auto
               ml-auto"
               >
-                 ثبت نام
+                ثبت نام
               </button>
             </div>
           </div>

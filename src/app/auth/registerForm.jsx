@@ -139,7 +139,7 @@ function RegisterForm({ setStep }) {
                             height="40"
                             width="75"
                             radius="9"
-                            color="bg-amber-500"
+                            color="rgb(var(--color-primary-900))"
                             ariaLabel="three-dots-loading"
                             wrapperStyle={{
                               display: "flex",

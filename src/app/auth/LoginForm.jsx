@@ -23,7 +23,8 @@ function LoginForm({ setStep }) {
     e.preventDefault();
     try {
       const data = await mutateLogin(user);
-      if (data.accesstoken) router.push("/");
+      
+      if (data) router.push("/");
 
       toast.success(data?.message);
     } catch (error) {

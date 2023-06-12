@@ -1,12 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 function AdminPage() {
   const [step, setStep] = useState(2);
   const router = useRouter();
-
-  
+//     useEffect(axios.get("http://localhost:2000", {
+//       withCredentials:true
+//   }), []);
 
   return (
     <div className="flex justify-center">
@@ -15,4 +17,3 @@ function AdminPage() {
   );
 }
 export default AdminPage;
-

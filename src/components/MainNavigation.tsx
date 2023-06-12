@@ -29,8 +29,8 @@ const MainNavigation = () => {
           <div className=" justify-center items-center md:justify-start hidden md:flex">
             <Link
               href={"/auth"}
-              className="h-9 w-45 text-white bg-amber-700 hover:bg-amber-900 hover:border-amber-900 border-2 flex
-            items-center justify-center text-center border-amber-700 rounded-lg text-lg font-normal mr-auto"
+              className="h-10 p-3 text-white bg-amber-500 hover:bg-amber-600 hover:border-amber-600 border-2 flex
+            items-center justify-center text-center border-amber-500 rounded-lg text-lg font-normal mr-auto"
             >
               ثبت نام/ورود
             </Link>

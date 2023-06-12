@@ -27,11 +27,10 @@ function RegisterForm({ setStep }) {
     e.preventDefault();
     try {
       const data = await mutateRegister(user);
-      console.log(data.message);
+
       toast.success(data.message);
-      setStep(2)
+      setStep(2);
     } catch (error) {
-      console.log(error.response.data.errors.message);
       toast.error(error?.response?.data?.errors?.message);
     }
   };

@@ -31,7 +31,6 @@ export default function Home() {
           const hardship = resHardship.data;
           setCategoryValues(category.data.category);
           setHardshipValues(hardship.data.hardship);
-          console.log(categoryValues, hardshipValues);
         } catch (error) {
           console.error("Error fetching categories:", error);
         }

@@ -11,7 +11,7 @@ const MainNavigation = () => {
 
   const logOutHandler = () => {
     async function logOutFunction() {
-      const {data} = await logout();
+      const { data } = await logout();
 
       toast.success(data?.message);
       user = {};
@@ -56,7 +56,6 @@ const MainNavigation = () => {
               {user.first_name} خوش آمدید!
               <button
                 onClick={logOutHandler}
-                href="/auth/logout"
                 className=" hover:text-amber-400 "
               >
                 خروج

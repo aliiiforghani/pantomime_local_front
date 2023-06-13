@@ -2,15 +2,23 @@ import { ThreeDots } from "react-loader-spinner";
 import { login } from "../services/authServices";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 function LoginForm({ setStep }) {
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [buttonCounter, setButtonCounter] = useState(() => {
+    const localButton = localStorage.getItem("buttonCounter");
+    return localButton ? localButton : 0;
+  });
+  const [timer, setTimer] = useState(() => {
+    const localTimer = localStorage.getItem("timer");
+    return localTimer ? localTimer : 0;
+  });
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
-  const {
+
+  let {
     data: loginData,
     error,
     isLoading,
@@ -19,18 +27,45 @@ function LoginForm({ setStep }) {
     mutationFn: login,
   });
 
+  useEffect(() => {
+    localStorage.setItem("buttonCounter", buttonCounter);
+    localStorage.setItem("timer", timer);
+  
+    if (timer > 0) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+    localStorage.setItem("timer", timer.toString());
+
+    localStorage.setItem("buttonCounter", buttonCounter);
+    setButtonCounter(0);
+  }, [timer]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const data = await mutateLogin(user);
-      
-      if (data) router.push("/");
+      setButtonCounter((prevState) => prevState + 1);
+      if (buttonCounter > 3) {
+        setTimer(20);
+      }
 
+      const data = await mutateLogin(user);
+      setLoading(true);
       toast.success(data?.message);
+      setTimeout(() => {
+        document.location.href = "/";
+      }, 1500);
     } catch (error) {
+      setLoading(false);
       toast.error(error?.response?.data?.errors?.message);
     }
   };
+
   return (
     <div>
       <div className="min-h-screen text-center  py-6 flex flex-col justify-center sm:py-12">
@@ -78,13 +113,16 @@ function LoginForm({ setStep }) {
                     </div>
 
                     <div className="relative">
-                      <button className="bg-amber-500 w-full  text-white rounded-md mt-10 px-2 py-2">
-                        {isLoading ? (
+                      <button
+                        className="bg-amber-500 w-full  text-white rounded-md mt-10 px-2 py-2 disabled:bg-amber-400 disabled:cursor-not-allowed"
+                        disabled={loading || isLoading || buttonCounter > 4}
+                      >
+                        {isLoading || loading ? (
                           <ThreeDots
-                            height="40"
-                            width="75"
+                            height="30"
+                            width="55"
                             radius="9"
-                            color="yellow"
+                            color="white"
                             ariaLabel="three-dots-loading"
                             wrapperStyle={{
                               display: "flex",
@@ -93,7 +131,11 @@ function LoginForm({ setStep }) {
                             visible={true}
                           />
                         ) : (
-                          "ارسال"
+                          <>
+                            {loading || isLoading || buttonCounter > 4
+                              ? timer
+                              : "ارسال"}
+                          </>
                         )}
                       </button>
                     </div>

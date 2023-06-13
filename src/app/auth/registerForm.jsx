@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { register } from "../services/authServices";
 
@@ -14,6 +14,34 @@ function RegisterForm({ setStep }) {
     last_name: "",
     mobile: "",
   });
+
+  const [buttonCounter, setButtonCounter] = useState(() => {
+    const localButton = localStorage.getItem("buttonCounter");
+    return localButton ? localButton : 0;
+  });
+  const [timer, setTimer] = useState(() => {
+    const localTimer = localStorage.getItem("timer");
+    return localTimer ? localTimer : 0;
+  });
+  useEffect(() => {
+    localStorage.setItem("buttonCounter", buttonCounter);
+    localStorage.setItem("timer", timer);
+
+    if (timer > 0) {
+      const interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+    localStorage.setItem("timer", timer.toString());
+
+    localStorage.setItem("buttonCounter", buttonCounter);
+    setButtonCounter(0);
+  }, [timer]);
+
   const {
     data: registerData,
     error,
@@ -26,6 +54,11 @@ function RegisterForm({ setStep }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      setButtonCounter((prevState) => prevState + 1);
+      if (buttonCounter > 3) {
+        setTimer(20);
+      }
+
       const data = await mutateRegister(user);
 
       toast.success(data.message);
@@ -132,14 +165,15 @@ function RegisterForm({ setStep }) {
                     <div className="relative">
                       <button
                         type="submit"
-                        className="bg-amber-500 w-full  text-white rounded-md mt-10 px-2 py-2"
+                        className="bg-amber-500 w-full  text-white rounded-md mt-10 px-2 py-2  disabled:bg-amber-400 disabled:cursor-not-allowed"
+                        disabled={isLoading || buttonCounter > 4}
                       >
                         {isLoading ? (
                           <ThreeDots
-                            height="40"
-                            width="75"
+                            height="30"
+                            width="55"
                             radius="9"
-                            color="yellow"
+                            color="white"
                             ariaLabel="three-dots-loading"
                             wrapperStyle={{
                               display: "flex",
@@ -148,7 +182,9 @@ function RegisterForm({ setStep }) {
                             visible={true}
                           />
                         ) : (
-                          "ارسال"
+                          <>
+                            {isLoading || buttonCounter > 4 ? timer : "ارسال"}
+                          </>
                         )}
                       </button>
                     </div>

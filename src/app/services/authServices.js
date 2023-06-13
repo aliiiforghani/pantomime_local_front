@@ -8,6 +8,10 @@ export function login(data) {
   return http.post("/user/login", data).then(({ data }) => data.data);
 }
 
+export function logout() {
+  return http.get("/user/logout").then(({ data }) => data);
+}
+
 export function completeProfile(data) {
   return http
     .post("/user/complete-profile", data)
@@ -20,10 +24,6 @@ export function getUserProfile() {
 
 export function updateProfile(data) {
   return http.patch("/user/update", data).then(({ data }) => data.data);
-}
-
-export function logout() {
-  return http.post("/user/logout");
 }
 
 // admin related fetchs :

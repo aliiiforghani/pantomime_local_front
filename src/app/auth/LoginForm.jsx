@@ -1,3 +1,4 @@
+"use client";
 import { ThreeDots } from "react-loader-spinner";
 import { login } from "../services/authServices";
 import { useMutation } from "@tanstack/react-query";
@@ -5,14 +6,22 @@ import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
 function LoginForm({ setStep }) {
   const [loading, setLoading] = useState(false);
-  const [buttonCounter, setButtonCounter] = useState(() => {
-    const localButton = localStorage.getItem("buttonCounter");
-    return localButton ? localButton : 0;
-  });
-  const [timer, setTimer] = useState(() => {
-    const localTimer = localStorage.getItem("timer");
-    return localTimer ? localTimer : 0;
-  });
+   const [buttonCounter, setButtonCounter] = useState(() => {
+     if (typeof window !== "undefined" && window.localStorage) {
+       const localButton = localStorage.getItem("buttonCounter");
+       return localButton ? localButton : 0;
+     } else {
+       return 0;
+     }
+   });
+   const [timer, setTimer] = useState(() => {
+     if (typeof window !== "undefined" && window.localStorage) {
+       const localTimer = localStorage.getItem("timer");
+       return localTimer ? localTimer : 0;
+     } else {
+       return 0;
+     }
+   });
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -30,7 +39,7 @@ function LoginForm({ setStep }) {
   useEffect(() => {
     localStorage.setItem("buttonCounter", buttonCounter);
     localStorage.setItem("timer", timer);
-  
+
     if (timer > 0) {
       const interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1);

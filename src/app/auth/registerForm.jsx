@@ -16,12 +16,20 @@ function RegisterForm({ setStep }) {
   });
 
   const [buttonCounter, setButtonCounter] = useState(() => {
-    const localButton = localStorage.getItem("buttonCounter");
-    return localButton ? localButton : 0;
+    if (typeof window !== "undefined" && window.localStorage) {
+      const localButton = localStorage.getItem("buttonCounter");
+      return localButton ? localButton : 0;
+    } else {
+      return 0;
+    }
   });
   const [timer, setTimer] = useState(() => {
-    const localTimer = localStorage.getItem("timer");
-    return localTimer ? localTimer : 0;
+    if (typeof window !== "undefined" && window.localStorage) {
+      const localTimer = localStorage.getItem("timer");
+      return localTimer ? localTimer : 0;
+    } else {
+      return 0;
+    }
   });
   useEffect(() => {
     localStorage.setItem("buttonCounter", buttonCounter);

@@ -78,13 +78,13 @@ function LoginForm({ setStep }) {
                     </div>
 
                     <div className="relative">
-                      <button className="bg-amber-500  text-white rounded-md mt-10 px-2 py-2">
+                      <button className="bg-amber-500 w-full  text-white rounded-md mt-10 px-2 py-2">
                         {isLoading ? (
                           <ThreeDots
                             height="40"
                             width="75"
                             radius="9"
-                            color="rgb(var(--color-primary-900))"
+                            color="yellow"
                             ariaLabel="three-dots-loading"
                             wrapperStyle={{
                               display: "flex",

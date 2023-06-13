@@ -132,14 +132,14 @@ function RegisterForm({ setStep }) {
                     <div className="relative">
                       <button
                         type="submit"
-                        className="bg-amber-500  text-white rounded-md mt-10 px-2 py-2"
+                        className="bg-amber-500 w-full  text-white rounded-md mt-10 px-2 py-2"
                       >
                         {isLoading ? (
                           <ThreeDots
                             height="40"
                             width="75"
                             radius="9"
-                            color="rgb(var(--color-primary-900))"
+                            color="yellow"
                             ariaLabel="three-dots-loading"
                             wrapperStyle={{
                               display: "flex",

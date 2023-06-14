@@ -4,9 +4,10 @@ import MainNavigation from "@/components/MainNavigation";
 import axios from "axios";
 import Image from "next/image";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
+import { toast } from "react-hot-toast";
 export default function Home() {
   const [selected, setSelected] = useState({
     categoryId: "6484417da2a73e14fc2785e1",
@@ -68,7 +69,7 @@ export default function Home() {
       // Handle error
       // if (error instanceof Error) toast(error?.response?.data?.errors?.message);
 
-      toast("لطفا مجددا تلاش کنید");
+      toast.error("لطفا مجددا تلاش کنید");
     }
   };
 
@@ -82,8 +83,7 @@ export default function Home() {
                 سوال، کلمه و موضوع
               </p>
               <p className="block text-lg pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
-                پانتومیم جالب و سرگرم کننده
-            
+                موضوع پانتومیم جالب و سرگرم کننده
               </p>
               <p
                 className="block pt-5 text-amber-500 text-3xl font-bold tracking-tight  sm:text-4xl
@@ -155,7 +155,7 @@ export default function Home() {
                   </option>
                 ))}
               </select>
-              <button className="w-full py-2 rounded-lg bg-amber-500 text-white hover:scale-110		">
+              <button className="w-full py-2 rounded-lg border-2 border-amber-500 bg-amber-500 text-white 	hover:bg-white hover:text-gray-900	">
                 ارسال
               </button>
             </form>
@@ -164,18 +164,7 @@ export default function Home() {
                 {sentence ? sentence : "دکمه ارسال رو بزن"}{" "}
               </p>
             </div>
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
+           
           </div>
         </div>
         <div className="mr-auto ml-auto flex justify-end relative max-w-xl xl:pr-10 lg:max-w-screen-xl">

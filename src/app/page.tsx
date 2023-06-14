@@ -74,16 +74,19 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center justify-between p-12 aspect-auto container mx-auto ">
       <div className=" flex shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16 bg-white rounded-2xl">
         <div className="flex flex-col lg:flex-row">
-          <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6">
+          <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6  lg:text-right text-center">
             <div>
-              <p className="block text-3xl font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
-                سوال، کلمه و موضوع
+              <p className="block t  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
+                 کلمه ، شعر و ...
               </p>
-              <p className="block text-lg pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
-                موضوع پانتومیم جالب و سرگرم کننده
+              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
+                موضوع پانتومیم جالب 
+              </p>
+              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
+                 و سرگرم کننده
               </p>
               <p
-                className="block pt-5 text-amber-500 text-3xl font-bold tracking-tight  sm:text-4xl
+                className="block pt-5 font-bold tracking-tight  sm:text-3xl
               sm:leading-none"
               >
                 پیدا کن
@@ -94,16 +97,12 @@ export default function Home() {
             <p className="mb-4 text-lg text-right text-gray-700">
               پانتومیم یکی از بازی های جالب برای دورهمی ها است. جملات و کلمات
               موضوع اصلی پانتومیم هستند و یکی از روش های خوب برای افزایش خلاقیت
-              میان افراد است. در ایران به پانتومیم، لال بازی هم می گویند و یک
-              بازی شادی بخش است که بین دو گروه و یا دو نفر قابل انجام است و با
-              استفاده از کلمات و ضرب المثل ها می توانید این بازی را انجام دهید.
+              میان افراد است. در ایران به پانتومیم، لال بازی یا ادابازی هم می
+              گویند و یک بازی شادی بخش است که بین دو گروه و یا دو نفر قابل انجام
+              است و با استفاده از کلمات و ضرب المثل ها می توانید این بازی را
+              انجام دهید. ما کلمات پانتومیم جالب را به شما می گوییم.
             </p>
-            <a
-              className="w-3/12 text-amber-500 text-center flex font-semibold items-center transition-colors duration-200
-            hover:text-amber-600"
-            >
-              بیشتر بخوانید
-            </a>
+           
           </div>
         </div>
       </div>

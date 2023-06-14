@@ -28,7 +28,7 @@ const MainNavigation = () => {
         isLoading ? "blur-sm opacity-70" : "opacity-100 blur-0"
       }`}
     >
-      <nav >
+      <nav>
         <ul className=" items-center py-2 flex justify-around  container ">
           <li>
             <Link
@@ -50,8 +50,8 @@ const MainNavigation = () => {
           </li>
 
           {user ? (
-            <li className="flex items-center">
-              <AiOutlineUser className="h-6 w-6 text-amber-600 hover:text-gray-600" />
+            <li className="flex items-center dark:text-white">
+              <AiOutlineUser className="h-6 w-6 text-amber-600  hover:text-gray-600" />
               {user?.first_name} خوش آمدید!
               <button
                 onClick={logOutHandler}

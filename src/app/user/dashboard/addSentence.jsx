@@ -149,7 +149,7 @@ toast.error(error?.response?.data?.errors?.message);
                         type="submit"
                         className="bg-amber-500 w-full  text-white rounded-md mt-10 px-2 py-2  disabled:bg-amber-400 disabled:cursor-not-allowed"
                       >
-                        send
+                        ارسال
                       </button>
                     </div>
                   </div>

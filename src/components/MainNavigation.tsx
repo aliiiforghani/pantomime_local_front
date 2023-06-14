@@ -64,7 +64,7 @@ const MainNavigation = () => {
             <li>
               <Link
                 className="flex  items-center py-2  text-gray-900 dark:text-white  hover:text-amber-400"
-                href="/auth"
+                href="/user/auth"
               >
                 <BiLogIn className="h-6 w-6 text-amber-600 hover:text-gray-600" />
                 ورود

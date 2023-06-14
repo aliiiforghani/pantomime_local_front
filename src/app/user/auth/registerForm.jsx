@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { register } from "../services/authServices";
+import { register } from "../../services/authServices";
 
 import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-hot-toast";
@@ -191,7 +191,9 @@ function RegisterForm({ setStep }) {
                           />
                         ) : (
                           <>
-                            {isLoading || buttonCounter > 4 ? timer : "ارسال"}
+                            {isLoading || buttonCounter > 4
+                              ? `${timer} ثانیه منتظر بمانید`
+                              : "ارسال"}
                           </>
                         )}
                       </button>

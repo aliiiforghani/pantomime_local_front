@@ -190,11 +190,9 @@ function RegisterForm({ setStep }) {
                             visible={true}
                           />
                         ) : (
-                          <>
-                            {isLoading || buttonCounter > 4
-                              ? `${timer} ثانیه منتظر بمانید`
-                              : "ارسال"}
-                          </>
+                        
+                          isLoading || buttonCounter > 4 ? timer.toString() : "ارسال"
+                         
                         )}
                       </button>
                     </div>

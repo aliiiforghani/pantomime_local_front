@@ -5,7 +5,6 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
 function LoginForm({ setStep }) {
-  const message = "ثانیه منتظر بمانید";
   const [loading, setLoading] = useState(false);
   const [buttonCounter, setButtonCounter] = useState(() => {
     if (typeof window !== "undefined" && window.localStorage) {
@@ -61,6 +60,7 @@ function LoginForm({ setStep }) {
     try {
       setButtonCounter((prevState) => prevState + 1);
       if (buttonCounter > 3) {
+        toast.error(" 30 ثانیه منتظر بمانید")
         setTimer(20);
       }
 

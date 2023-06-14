@@ -36,6 +36,7 @@ function RegisterForm({ setStep }) {
     localStorage.setItem("timer", timer);
 
     if (timer > 0) {
+   toast.error(" 30 ثانیه منتظر بمانید");
       const interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1);
       }, 1000);

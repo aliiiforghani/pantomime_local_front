@@ -1,5 +1,5 @@
 "use client";
-import "./globals.css";
+// import "./globals.css";
 import MainNavigation from "@/components/MainNavigation";
 import axios from "axios";
 import Image from "next/image";
@@ -74,26 +74,26 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="bt-24 shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16">
+      <div className=" flex shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16 bg-white rounded-2xl">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6">
             <div>
               <p className="block text-3xl font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
                 سوال، کلمه و موضوع
               </p>
-              <p className="block pt-5 text-3xl font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
+              <p className="block text-lg pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-4xl">
                 پانتومیم جالب و سرگرم کننده
-                <br />
+            
               </p>
               <p
-                className="block pt-5 text-blue-700 text-3xl font-bold tracking-tight  sm:text-4xl
+                className="block pt-5 text-amber-500 text-3xl font-bold tracking-tight  sm:text-4xl
               sm:leading-none"
               >
                 پیدا کن
               </p>
             </div>
           </div>
-          <div className="lg:w-1/2">
+          <div className="lg:w-1/2 ">
             <p className="mb-4 text-lg text-right text-gray-700">
               پانتومیم یکی از بازی های جالب برای دورهمی ها است. جملات و کلمات
               موضوع اصلی پانتومیم هستند و یکی از روش های خوب برای افزایش خلاقیت
@@ -102,8 +102,8 @@ export default function Home() {
               استفاده از کلمات و ضرب المثل ها می توانید این بازی را انجام دهید.
             </p>
             <a
-              className="w-3/12 text-blue-700 text-center flex font-semibold items-center transition-colors duration-200
-            hover:text-blue-900"
+              className="w-3/12 text-amber-500 text-center flex font-semibold items-center transition-colors duration-200
+            hover:text-amber-600"
             >
               بیشتر بخوانید
             </a>
@@ -112,14 +112,14 @@ export default function Home() {
       </div>
 
       <div
-        className="bg-white  pt-16 pr-4 pb-16 pl-4 mr-auto ml-auto flex flex-col items-center relative lg:flex-row lg:py-5
+        className="bg-white rounded-2xl pt-16 pr-4 pb-16 pl-4 mr-auto ml-auto flex flex-col items-center relative lg:flex-row lg:py-5
     xl:py-4 md:px-2"
       >
         <div
           className="  justify-center items-center w-full h-full lg:w-1/2 lg:justify-end lg:bottom-0 lg:left-0
       lg:items-center"
         >
-          <div className="md:max-w-md px-4 md:px-20 mx-auto">
+          <div className="lg::max-w-md px-4  mx-auto">
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
               <label className="block text-center mb-10 mt-10 text-2xl  font-medium text-gray-900 dark:text-gray-900">
                 هر چی که میخوای انتخاب کن
@@ -159,7 +159,7 @@ export default function Home() {
                 ارسال
               </button>
             </form>
-            <div className="mt-10 container text-center text-2xl rounded-lg border-2  h-60  border-amber-500 justify-center flex items-center">
+            <div className="mt-10 container mb-5 md:mb-0 text-center text-2xl rounded-lg border-2  h-60  border-amber-500 justify-center flex items-center">
               <p className="text-gray-900 leading-relaxed ">
                 {sentence ? sentence : "دکمه ارسال رو بزن"}{" "}
               </p>
@@ -180,8 +180,8 @@ export default function Home() {
         </div>
         <div className="mr-auto ml-auto flex justify-end relative max-w-xl xl:pr-10 lg:max-w-screen-xl">
           <img
-            alt="Picture of the author"
-            src="/images/2.jpg"
+            alt="Picture of the pantomime"
+            src="/images/cover.png"
             className="object-contain object-top btn- w-full h-auto lg:w-auto
         lg:h-full"
           />

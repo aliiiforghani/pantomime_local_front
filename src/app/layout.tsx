@@ -17,11 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fa" dir="rtl">
-      <body>
+      <body className="aspect-auto container mx-auto bg-gradient-to-t from-indigo-400 from-10% via-sky-500 via-30% to-emerald-500 to-90% ... ">
         <Providers>
-        <MainNavigation />
-        <Toaster />
-          {children}</Providers>
+          <MainNavigation />
+          <Toaster />
+          {children}
+        </Providers>
       </body>
     </html>
   );

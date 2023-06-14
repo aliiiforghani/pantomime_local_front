@@ -24,16 +24,15 @@ const MainNavigation = () => {
   };
   return (
     <header
-      className={`shadow-md mb-10 top-0 transition-all duration-200 bg-white dark:bg-gray-900 ${
+      className={` shadow-md transition-all duration-200 bg-white dark:bg-gray-900 ${
         isLoading ? "blur-sm opacity-70" : "opacity-100 blur-0"
       }`}
     >
-      <nav>
-        <ul className=" items-center  flex justify-between py-2 container xl:max-w-screen-xl">
-          <li></li>
+      <nav >
+        <ul className=" items-center py-2 flex justify-around  container ">
           <li>
             <Link
-              className="flex justify-center items-center  py-2 text-gray-900 dark:text-white  hover:text-amber-400"
+              className="flex  items-center  text-gray-900 dark:text-white  hover:text-amber-400"
               href="/"
             >
               <BiHomeSmile className="h-6 w-6 text-amber-600 hover:text-gray-600" />{" "}
@@ -42,16 +41,16 @@ const MainNavigation = () => {
           </li>
           <li>
             <Link
-              className="flex justify-center items-center py-2  text-gray-900 dark:text-white  hover:text-amber-400"
+              className="flex  items-center py-2  text-gray-900 dark:text-white  hover:text-amber-400"
               href="/"
             >
               <BiClipboard className="h-6 w-6 text-amber-600 hover:text-gray-600" />
               بلاگ ها
             </Link>
           </li>
-          <li></li> <li></li>
+
           {user ? (
-            <li className="flex justify-center items-center">
+            <li className="flex items-center">
               <AiOutlineUser className="h-6 w-6 text-amber-600 hover:text-gray-600" />
               {user.first_name} خوش آمدید!
               <button
@@ -64,7 +63,7 @@ const MainNavigation = () => {
           ) : (
             <li>
               <Link
-                className="flex justify-center items-center py-2  text-gray-900 dark:text-white  hover:text-amber-400"
+                className="flex  items-center py-2  text-gray-900 dark:text-white  hover:text-amber-400"
                 href="/auth"
               >
                 <BiLogIn className="h-6 w-6 text-amber-600 hover:text-gray-600" />
@@ -72,7 +71,6 @@ const MainNavigation = () => {
               </Link>
             </li>
           )}
-          <li></li>
         </ul>
       </nav>
     </header>

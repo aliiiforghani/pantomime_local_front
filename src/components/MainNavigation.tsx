@@ -24,12 +24,12 @@ const MainNavigation = () => {
   };
   return (
     <header
-      className={` shadow-md transition-all duration-200 bg-white dark:bg-gray-900 ${
+      className={` shadow-md  transition-all duration-200 bg-white dark:bg-gray-900 ${
         isLoading ? "blur-sm opacity-70" : "opacity-100 blur-0"
       }`}
     >
       <nav>
-        <ul className=" items-center py-2 flex justify-around  container ">
+        <ul className=" items-center py-2 flex justify-around  ">
           <li>
             <Link
               className="flex  items-center  text-gray-900 dark:text-white  hover:text-amber-400"

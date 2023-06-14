@@ -71,7 +71,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-12">
+    <div className="flex min-h-screen flex-col items-center justify-between p-12 aspect-auto container mx-auto ">
       <div className=" flex shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16 bg-white rounded-2xl">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6">

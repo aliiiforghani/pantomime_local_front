@@ -24,7 +24,7 @@ function DashboardPage() {
   };
 
   return (
-    <div className=" sm:grid sm:grid-cols-7 sm:gap-4 sm:mt-7">
+    <div className=" sm:grid sm:grid-cols-7 sm:gap-4 sm:mt-7 aspect-auto container mx-auto">
       <div className="bg-white overflow-auto pb-4 flex mt-16 mb-6  h-fit sm:rounded-2xl shadow-2xl sm:col-span-2 sm:grid sm:grid-row-4 sm:gap-0">
         <button className="sm:bg-white sm:text-gray-900 items-center rounded-full p-2 mr-5 mt-5 flex sm:ml-2 sm:rounded-lg sm:hover:text-amber-500 sm:hover:bg-gray-100   bg-amber-500 text-white ">
           داشبورد

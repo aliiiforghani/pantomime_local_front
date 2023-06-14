@@ -64,12 +64,9 @@ export default function Home() {
       );
 
       setSentence(response.data.data.result.text);
-      // Handle successful response
-    } catch (error) {
-      // Handle error
-      // if (error instanceof Error) toast(error?.response?.data?.errors?.message);
-
-      toast.error("لطفا مجددا تلاش کنید");
+    } catch (error: any) {
+      if (error?.response?.data?.errors?.message)
+        toast.error(error?.response?.data?.errors?.message);
     }
   };
 
@@ -164,7 +161,6 @@ export default function Home() {
                 {sentence ? sentence : "دکمه ارسال رو بزن"}{" "}
               </p>
             </div>
-           
           </div>
         </div>
         <div className="mr-auto ml-auto flex justify-end relative max-w-xl xl:pr-10 lg:max-w-screen-xl">

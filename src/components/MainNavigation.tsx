@@ -42,10 +42,10 @@ const MainNavigation = () => {
           <li>
             <Link
               className="flex  items-center py-2  text-gray-900 dark:text-white  hover:text-amber-400"
-              href="/"
+              href="/user/dashboard"
             >
               <BiClipboard className="h-6 w-6 text-amber-600 hover:text-gray-600" />
-              بلاگ ها
+              پنل کاربری
             </Link>
           </li>
 

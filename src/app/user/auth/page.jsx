@@ -21,19 +21,11 @@ function AuthPage() {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className="w-full sm:max-w-sm">{renderSteps()}</div>
+    <div>
+      <div className="container mx-auto sm:max-w-lg ">
+        {renderSteps()}
+      </div>
     </div>
   );
 }
 export default AuthPage;
-
-//? TASK #1 : auth user using OTP :
-
-//1. form -> getOTP -> input + button => phoneNumber => send OTP
-// input => TextField
-// 2. form -> checkOTP ->
-// request => ?
-//* 1. axios (useState + useEffect),
-//* 2. useFetch (data, loading, error),
-//* 3. react-query ->  redux alternative (state management) + fetch , mutate !

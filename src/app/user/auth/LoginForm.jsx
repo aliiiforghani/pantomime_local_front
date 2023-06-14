@@ -5,7 +5,6 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
 function LoginForm({ setStep }) {
-
   const [loading, setLoading] = useState(false);
   const [buttonCounter, setButtonCounter] = useState(() => {
     if (typeof window !== "undefined" && window.localStorage) {
@@ -61,7 +60,7 @@ function LoginForm({ setStep }) {
     try {
       setButtonCounter((prevState) => prevState + 1);
       if (buttonCounter > 3) {
-        toast.error(" 30 ثانیه منتظر بمانید")
+        toast.error(" 30 ثانیه منتظر بمانید");
         setTimer(20);
       }
 
@@ -78,12 +77,12 @@ function LoginForm({ setStep }) {
   };
 
   return (
-    <div>
-      <div className="min-h-screen text-center  py-6 flex flex-col justify-center sm:py-12">
-        <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-          <div className="absolute inset-0 bg-gradient-to-r from-amber-300 to-amber-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-          <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-            <div className="max-w-md mx-auto">
+    <div >
+      <div className="min-h-screen text-center py-6 flex flex-col justify-center sm:py-12">
+        <div className="relative py-3 ">
+          <div className="absolute inset-0 bg-gradient-to-r  from-amber-300 to-amber-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+          <div className="relative px-4 py-10 bg-white  mx-auto shadow-lg sm:rounded-3xl sm:p-20">
+            <div>
               <div>
                 <h1 className="text-2xl font-semibold">ورود</h1>
               </div>
@@ -141,12 +140,10 @@ function LoginForm({ setStep }) {
                             }}
                             visible={true}
                           />
+                        ) : loading || isLoading || buttonCounter > 4 ? (
+                          timer.toString()
                         ) : (
-                          
-                            loading || isLoading || buttonCounter > 4
-                              ? timer.toString()
-                              : "ارسال"
-                         
+                          "ارسال"
                         )}
                       </button>
                     </div>

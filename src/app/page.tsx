@@ -74,7 +74,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
+    <div className="flex min-h-screen flex-col items-center justify-between p-12">
       <div className=" flex shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16 bg-white rounded-2xl">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6">
@@ -159,7 +159,7 @@ export default function Home() {
                 ارسال
               </button>
             </form>
-            <div className="mt-10 container mb-5 md:mb-0 text-center text-2xl rounded-lg border-2  h-60  border-amber-500 justify-center flex items-center">
+            <div className="mt-10 container mb-5 md:mb-0 text-center text-2xl rounded-lg border  h-60 bg-gray-50  border-gray-300 justify-center flex items-center">
               <p className="text-gray-900 leading-relaxed ">
                 {sentence ? sentence : "دکمه ارسال رو بزن"}{" "}
               </p>

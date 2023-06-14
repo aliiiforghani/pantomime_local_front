@@ -12,12 +12,11 @@ export async function middleware(req) {
     if (!user) return NextResponse.redirect(new URL("/user/auth", url));
   }
 
-  // if (pathname.startsWith("/admin")) {
-  //   const user = await middlewareAuth(req);
-  //   if (!user) return NextResponse.redirect(new URL("/auth", url));
-  //   if (user && user.role !== "ADMIN")
-  //     return NextResponse.redirect(new URL("/", req.url));
-  // }
+  if (pathname.startsWith("/user/auth")) {
+    const user = await middlewareAuth(req);
+    if (user) return NextResponse.redirect(new URL("/", url));
+
+  }
 }
 
 export const config = {

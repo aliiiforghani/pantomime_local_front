@@ -52,10 +52,10 @@ const MainNavigation = () => {
           {user ? (
             <li className="flex items-center">
               <AiOutlineUser className="h-6 w-6 text-amber-600 hover:text-gray-600" />
-              {user.first_name} خوش آمدید!
+              {user?.first_name} خوش آمدید!
               <button
                 onClick={logOutHandler}
-                className=" hover:text-amber-400 "
+                className=" hover:text-amber-400 text-red-500 "
               >
                 خروج
               </button>

@@ -22,7 +22,7 @@ function AuthPage() {
 
   return (
     <div>
-      <div className="container mx-auto sm:max-w-lg aspect-auto mx-auto ">
+      <div className="container  sm:max-w-lg aspect-auto mx-auto ">
         {renderSteps()}
       </div>
     </div>

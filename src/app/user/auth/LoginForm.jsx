@@ -49,9 +49,9 @@ function LoginForm({ setStep }) {
         clearInterval(interval);
       };
     }
-    localStorage.setItem("timer", timer.toString());
+    localStorage.removeItem("timer");
 
-    localStorage.setItem("buttonCounter", buttonCounter);
+    localStorage.removeItem("buttonCounter");
     setButtonCounter(0);
   }, [timer]);
 

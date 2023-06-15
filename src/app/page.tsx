@@ -201,7 +201,7 @@ export default function Home() {
                     height="30"
                     width="55"
                     radius="9"
-                    color="black"
+                    color="#d97706"
                     ariaLabel="three-dots-loading"
                     wrapperStyle={{
                       display: "flex",

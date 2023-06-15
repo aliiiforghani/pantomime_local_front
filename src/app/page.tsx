@@ -99,6 +99,7 @@ export default function Home() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
+      setSentence("");
       const response = await mutateSentence(selected);
       setSentence(response.text);
     } catch (error: any) {

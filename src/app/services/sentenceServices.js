@@ -28,5 +28,8 @@ export function addHardship(data) {
 
 
 export function addSentenceByAdmin() {
-  return http.get("/sentence/admin/add").then(({ data }) => data.data);
+  return http.post("/sentence/admin/add").then(({ data }) => data.data);
+}
+export function addSentenceByUser(data) {
+  return http.post("/sentence/add",data).then(({ data }) => data.data);
 }

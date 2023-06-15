@@ -4,8 +4,13 @@ import { useMutation } from "@tanstack/react-query";
 
 import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-hot-toast";
-import axios from "axios";
+
 import http from "@/app/services/httpService";
+import {
+  addSentenceByUser,
+  getCategory,
+  getHardship,
+} from "@/app/services/sentenceServices";
 
 function AddSentence() {
   const [sentence, setSentence] = useState({
@@ -18,41 +23,82 @@ function AddSentence() {
   const [categoryValues, setCategoryValues] = useState([]);
   const [hardshipValues, setHardshipValues] = useState([]);
 
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const fetchData = async () => {
+  //       try {
+  //         const resCategory = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/category/all`
+  //         );
+  //         const resHardship = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
+  //         );
+  //         const category = resCategory.data;
+  //         const hardship = resHardship.data;
+  //         setCategoryValues(category.data.category.slice(1, 7));
+  //         setHardshipValues(hardship.data.hardship);
+  //       } catch (error) {
+  //         console.error("Error fetching categories:", error);
+  //       }
+  //     };
+
+  //     fetchData();
+  //   }
+  // }, []);
+
+  const {
+    data: cateogry,
+    error: categoryError,
+    isLoading: categoryLoading,
+    mutateAsync: mutateCategory,
+  } = useMutation({
+    mutationFn: getCategory,
+  });
+  const {
+    data: hardship,
+    error: hardshipError,
+    isLoading: hardshipLoading,
+    mutateAsync: mutateHardship,
+  } = useMutation({
+    mutationFn: getHardship,
+  });
+  const {
+    data: addedSentence,
+    error: addError,
+    isLoading: addLoading,
+    mutateAsync: mutateAdd,
+  } = useMutation({
+    mutationFn: addSentenceByUser,
+  });
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const fetchData = async () => {
-        try {
-          const resCategory = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/category/all`
-          );
-          const resHardship = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
-          );
-          const category = resCategory.data;
-          const hardship = resHardship.data;
-          setCategoryValues(category.data.category.slice(1, 7));
-          setHardshipValues(hardship.data.hardship);
-        } catch (error) {
-          console.error("Error fetching categories:", error);
-        }
-      };
-
-      fetchData();
+    async function fetchCategory() {
+      try {
+        const categoryData = await mutateCategory();
+        const hardshipData = await mutateHardship();
+        setCategoryValues(categoryData.category);
+        setHardshipValues(hardshipData.hardship);
+      } catch (error) {}
     }
+    fetchCategory();
   }, []);
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await http.post("/sentence/add", sentence);
-
-        toast.success(response?.data?.data?.message);
+      const response = await mutateAdd(sentence);
+      if (response.message && response.sentence)
+        setSentence({
+          title: "",
+          text: "",
+          category: "6484417fa2a73e14fc2785e4",
+          hardship: "64844193a2a73e14fc2785f6",
+        });
+      console.log(response);
+      toast.success(response?.message);
       // Handle successful response
     } catch (error) {
-
-toast.error(error?.response?.data?.errors?.message);
-
+      toast.error(error?.response?.data?.errors?.message);
     }
   };
   return (
@@ -72,6 +118,7 @@ toast.error(error?.response?.data?.errors?.message);
                     <div className="relative">
                       <input
                         autoComplete="off"
+                        value={sentence.title}
                         id="title"
                         name="title"
                         type="text"
@@ -90,6 +137,7 @@ toast.error(error?.response?.data?.errors?.message);
                         autoComplete="off"
                         id="description"
                         name="description"
+                        value={sentence.text}
                         type="text"
                         className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                         placeholder="description"

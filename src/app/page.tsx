@@ -1,13 +1,17 @@
 "use client";
 // import "./globals.css";
 import MainNavigation from "@/components/MainNavigation";
-import axios from "axios";
-import Image from "next/image";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-
+import {
+  getCategory,
+  getHardship,
+  getRandomSentence,
+} from "./services/sentenceServices";
 import "react-toastify/dist/ReactToastify.css";
-import { ChevronDoubleDownIcon } from "@heroicons/react/24/solid";
 import { toast } from "react-hot-toast";
+import { useMutation } from "@tanstack/react-query";
+import { ThreeDots } from "react-loader-spinner";
+import PacmanLoader from "react-spinners/PacmanLoader";
 export default function Home() {
   const [selected, setSelected] = useState({
     categoryId: "6484417da2a73e14fc2785e1",
@@ -18,28 +22,65 @@ export default function Home() {
   const [hardshipValues, setHardshipValues] = useState<any[]>([]);
   const [sentence, setSentence] = useState("");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const fetchData = async () => {
-        try {
-          const resCategory = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/category/all`
-          );
-          const resHardship = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
-          );
-          const category = resCategory.data;
-          const hardship = resHardship.data;
-          setCategoryValues(category.data.category);
-          setHardshipValues(hardship.data.hardship);
-        } catch (error) {
-          console.error("Error fetching categories:", error);
-        }
-      };
+  const {
+    data: cateogry,
+    error: categoryError,
+    isLoading: categoryLoading,
+    mutateAsync: mutateCategory,
+  } = useMutation({
+    mutationFn: getCategory,
+  });
+  const {
+    data: hardship,
+    error: hardshipError,
+    isLoading: hardshipLoading,
+    mutateAsync: mutateHardship,
+  } = useMutation({
+    mutationFn: getHardship,
+  });
+  const {
+    data: randomSentence,
+    error: sentenceError,
+    isLoading: sentenceLoading,
+    mutateAsync: mutateSentence,
+  } = useMutation({
+    mutationFn: getRandomSentence,
+  });
 
-      fetchData();
+  useEffect(() => {
+    async function fetchCategory() {
+      try {
+        const categoryData = await mutateCategory();
+        const hardshipData = await mutateHardship();
+        setCategoryValues(categoryData.category);
+        setHardshipValues(hardshipData.hardship);
+      } catch (error) {}
     }
+    fetchCategory();
   }, []);
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const fetchData = async () => {
+  //       try {
+  //         const resCategory = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/category/all`
+  //         );
+  //         const resHardship = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
+  //         );
+  //         const category = resCategory.data;
+  //         const hardship = resHardship.data;
+
+  //         setHardshipValues(hardship.data.hardship);
+  //       } catch (error) {
+  //         console.error("Error fetching categories:", error);
+  //       }
+  //     };
+
+  //     fetchData();
+  //   }
+  // }, []);
 
   const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelected({
@@ -58,12 +99,8 @@ export default function Home() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/sentence/random`,
-        selected
-      );
-
-      setSentence(response.data.data.result.text);
+      const response = await mutateSentence(selected);
+      setSentence(response.text);
     } catch (error: any) {
       if (error?.response?.data?.errors?.message)
         toast.error(error?.response?.data?.errors?.message);
@@ -77,13 +114,13 @@ export default function Home() {
           <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6  lg:text-right text-center">
             <div>
               <p className="block t  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
-                 کلمه ، شعر و ...
+                کلمه ، شعر و ...
               </p>
               <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
-                موضوع پانتومیم جالب 
+                موضوع پانتومیم جالب
               </p>
               <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
-                 و سرگرم کننده
+                و سرگرم کننده
               </p>
               <p
                 className="block pt-5 font-bold tracking-tight  sm:text-3xl
@@ -102,7 +139,6 @@ export default function Home() {
               است و با استفاده از کلمات و ضرب المثل ها می توانید این بازی را
               انجام دهید. ما کلمات پانتومیم جالب را به شما می گوییم.
             </p>
-           
           </div>
         </div>
       </div>
@@ -157,7 +193,24 @@ export default function Home() {
             </form>
             <div className="mt-10 container mb-5 md:mb-0 text-center text-2xl rounded-lg border  h-60 bg-gray-50  border-gray-300 justify-center flex items-center">
               <p className="text-gray-900 leading-relaxed ">
-                {sentence ? sentence : "دکمه ارسال رو بزن"}{" "}
+                {sentence ? (
+                  sentence
+                ) : sentenceLoading ? (
+                  <ThreeDots
+                    height="30"
+                    width="55"
+                    radius="9"
+                    color="black"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                    visible={true}
+                  />
+                ) : (
+                  <PacmanLoader color="hsla(41, 100%, 47%, 1)" />
+                )}
               </p>
             </div>
           </div>

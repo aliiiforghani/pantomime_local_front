@@ -78,10 +78,10 @@ function RegisterForm({ setStep }) {
   };
   return (
     <div>
-      <div className="min-h-screen text-center py-6 flex flex-col justify-center sm:py-12">
+      <div className="min-h-screen m-10 text-center py-6 flex flex-col justify-center sm:py-12">
         <div className="relative py-3 ">
-          <div className="absolute inset-0 bg-gradient-to-r  from-amber-300 to-amber-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-          <div className="relative px-4 py-10 bg-white  mx-auto shadow-lg sm:rounded-3xl sm:p-20">
+          <div className="absolute inset-0 bg-gradient-to-r  from-amber-300 to-amber-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 rounded-3xl"></div>
+          <div className="relative px-4 py-10 bg-white  mx-auto shadow-lg rounded-3xl sm:p-20">
             <div>
               <div>
                 <h1 className="text-2xl font-semibold">ثبت نام</h1>

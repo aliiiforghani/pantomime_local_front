@@ -7,7 +7,10 @@ import { logout } from "@/app/services/authServices";
 import { toast } from "react-hot-toast";
 const MainNavigation = () => {
   const { data, error, isLoading } = useGetUser();
+
   let { user } = data || {};
+
+  if (user) localStorage.setItem("user", JSON.stringify(user));
 
   const logOutHandler = () => {
     async function logOutFunction() {
@@ -15,6 +18,7 @@ const MainNavigation = () => {
 
       toast.success(data?.message);
       user = {};
+      localStorage.removeItem("user");
       setTimeout(() => {
         document.location.href = "/";
       }, 1500);

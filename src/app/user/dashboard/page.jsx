@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import AddSentence from "./addSentence";
-
+import UserInformation from "./userInformation";
 function DashboardPage() {
   const [step, setStep] = useState(3);
 
@@ -12,7 +12,7 @@ function DashboardPage() {
         return <h1>dashboard</h1>;
         break;
       case 2:
-        return <h1>user profile</h1>;
+        return <UserInformation />;
         break;
       case 3:
         return <AddSentence />;
@@ -29,7 +29,10 @@ function DashboardPage() {
         <button className="sm:bg-white sm:text-gray-900 items-center rounded-full p-2 mr-5 mt-5 flex sm:ml-2 sm:rounded-lg sm:hover:text-amber-500 sm:hover:bg-gray-100   bg-amber-500 text-white ">
           داشبورد
         </button>
-        <button className="sm:bg-white sm:text-gray-900 items-center rounded-full p-2 mr-5 mt-5 flex sm:ml-2 sm:rounded-lg sm:hover:text-amber-500 sm:hover:bg-gray-100   bg-amber-500 text-white ">
+        <button
+          onClick={() => setStep(2)}
+          className="sm:bg-white sm:text-gray-900 items-center rounded-full p-2 mr-5 mt-5 flex sm:ml-2 sm:rounded-lg sm:hover:text-amber-500 sm:hover:bg-gray-100   bg-amber-500 text-white "
+        >
           اطلاعات کاربر
         </button>
         <button
@@ -42,7 +45,7 @@ function DashboardPage() {
           پیشنهادات
         </button>
       </div>
-      <div className="col-span-5 hover:text-amber-500">{render()}</div>
+      <div className="col-span-5">{render()}</div>
     </div>
   );
 }

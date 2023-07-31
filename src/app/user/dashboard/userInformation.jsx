@@ -16,8 +16,8 @@ function UserInformation() {
     <div className="px-12">
       <div className="min-h-screen text-center  py-6 flex flex-col justify-center sm:py-12">
         <div className="relative py-3 sm:max-w-3xl ">
-          <div className="absolute inset-0 bg-gradient-to-r  from-amber-300 to-amber-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-          <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl ">
+          <div className="absolute inset-0 bg-gradient-to-r  from-amber-300 to-amber-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 rounded-3xl"></div>
+          <div className="relative px-4 py-10 bg-white shadow-lg rounded-3xl ">
             <div className="max-w-md mx-auto ">
               <div className="relative flex flex-col min-w-0 break-words bg-white w-full   rounded-lg ">
                 <div className="">
@@ -43,20 +43,20 @@ function UserInformation() {
                   <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
                     <div className="flex flex-wrap justify-center">
                       <div className="w-full lg:w-9/12 px-4">
-                        <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
+                        {/* <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
                           An artist of considerable range, Jenna the name taken
                           by Melbourne-raised, Brooklyn-sdasdsdasbased Nick
                           Murphy writes, performs and records sadasdsall of his
                           own music, giving it a warm, intimate sadasfeel with a
                           solid groove structure. An artist osadasdsf
                           considerable range.
-                        </p>
-                        <a
+                        </p> */}
+                        {/* <a
                           href="javascript:void(0);"
                           className="font-normal text-pink-500"
                         >
                           Show more
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </div>
@@ -78,7 +78,6 @@ function UserInformation() {
                         className="text-blueGray-500 hover:text-blueGray-800"
                         target="_blank"
                       ></a>
-                      
                     </div>
                   </div>
                 </div>

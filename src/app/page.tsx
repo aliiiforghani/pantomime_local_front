@@ -59,28 +59,6 @@ export default function Home() {
     fetchCategory();
   }, []);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const fetchData = async () => {
-  //       try {
-  //         const resCategory = await axios.get(
-  //           `${process.env.NEXT_PUBLIC_API_URL}/category/all`
-  //         );
-  //         const resHardship = await axios.get(
-  //           `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
-  //         );
-  //         const category = resCategory.data;
-  //         const hardship = resHardship.data;
-
-  //         setHardshipValues(hardship.data.hardship);
-  //       } catch (error) {
-  //         console.error("Error fetching categories:", error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }
-  // }, []);
 
   const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelected({

@@ -68,7 +68,6 @@ function AddSentence() {
           category: "64c699c3188ea1c9d208c75f",
           hardship: "64c699fcbf9bd8883fa1f2d9",
         });
-      console.log(response);
       toast.success(response?.message);
      
     } catch (error) {

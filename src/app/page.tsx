@@ -88,28 +88,19 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-12 aspect-auto container mx-auto ">
-      <div className=" flex shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16rounded-2xl">
-        <div className="flex flex-col lg:flex-row">
-          <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6  lg:text-right text-center">
-            <div className=" bg-white ">
-              <p className="block t  font-bold tracking-tight text-gray-900 leading-6 text-2xl  sm:text-3xl">
+      <div className="  mb-7 ">
+        <div className=" flex-col lg:flex-row col-span-1 md:grid md:grid-cols-3 md:gap-4">
+          <div className="lg:mb-0 mb-6gap-4 text-center md:col-span-1 bg-white shadow-xl  p-8 md:p-16 mb-5 md:mb-0  rounded-2xl ">
+            <div className="">
+              <p className="font-bold text-gray-900 text-2xl md:text-right text-center text md:text-3xl leading-loose">
                 کلمه ، شعر و ...
-              </p>
-              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6 text-2xl  sm:text-3xl">
-                موضوع پانتومیم جالب
-              </p>
-              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6 text-2xl  sm:text-3xl">
-                و سرگرم کننده
-              </p>
-              <p
-                className="block pt-5 font-bold tracking-tight  text-2xl  sm:text-3xl
-              sm:leading-none"
-              >
+           موضوع پانتومیم جالب
+              و سرگرم کننده
                 پیدا کن
               </p>
             </div>
           </div>
-          <div className="lg:w-1/2  bg-white ">
+          <div className="sm:col-span-2 bg-white shadow-xl  p-8 sm:p-16  rounded-2xl " >
             <p className="mb-4 text-lg text-right text-gray-700">
               پانتومیم یکی از بازی های جالب برای دورهمی ها است. جملات و کلمات
               موضوع اصلی پانتومیم هستند و یکی از روش های خوب برای افزایش خلاقیت

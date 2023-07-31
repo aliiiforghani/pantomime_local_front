@@ -1,11 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-
-import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-hot-toast";
-
-import http from "@/app/services/httpService";
 import {
   addSentenceByUser,
   getCategory,
@@ -16,35 +12,13 @@ function AddSentence() {
   const [sentence, setSentence] = useState({
     title: "",
     text: "",
-    category: "6484417fa2a73e14fc2785e4",
-    hardship: "64844193a2a73e14fc2785f6",
+    category: "64c699c3188ea1c9d208c75f",
+    hardship: "64c699fcbf9bd8883fa1f2d9",
   });
 
   const [categoryValues, setCategoryValues] = useState([]);
   const [hardshipValues, setHardshipValues] = useState([]);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const fetchData = async () => {
-  //       try {
-  //         const resCategory = await axios.get(
-  //           `${process.env.NEXT_PUBLIC_API_URL}/category/all`
-  //         );
-  //         const resHardship = await axios.get(
-  //           `${process.env.NEXT_PUBLIC_API_URL}/hardship/all`
-  //         );
-  //         const category = resCategory.data;
-  //         const hardship = resHardship.data;
-  //         setCategoryValues(category.data.category.slice(1, 7));
-  //         setHardshipValues(hardship.data.hardship);
-  //       } catch (error) {
-  //         console.error("Error fetching categories:", error);
-  //       }
-  //     };
-
-  //     fetchData();
-  //   }
-  // }, []);
 
   const {
     data: cateogry,
@@ -91,12 +65,12 @@ function AddSentence() {
         setSentence({
           title: "",
           text: "",
-          category: "6484417fa2a73e14fc2785e4",
-          hardship: "64844193a2a73e14fc2785f6",
+          category: "64c699c3188ea1c9d208c75f",
+          hardship: "64c699fcbf9bd8883fa1f2d9",
         });
       console.log(response);
       toast.success(response?.message);
-      // Handle successful response
+     
     } catch (error) {
       toast.error(error?.response?.data?.errors?.message);
     }

@@ -14,8 +14,8 @@ import { ThreeDots } from "react-loader-spinner";
 import PacmanLoader from "react-spinners/PacmanLoader";
 export default function Home() {
   const [selected, setSelected] = useState({
-    categoryId: "6484417da2a73e14fc2785e1",
-    hardshipId: "64844193a2a73e14fc2785f6",
+    categoryId: "64c699c3188ea1c9d208c75f",
+    hardshipId: "64c699fcbf9bd8883fa1f2d9",
   });
 
   const [categoryValues, setCategoryValues] = useState<any[]>([]);
@@ -88,28 +88,28 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-12 aspect-auto container mx-auto ">
-      <div className=" flex shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16 bg-white rounded-2xl">
+      <div className=" flex shadow-xl mb-7 pt-8 pr-8 pb-8 pl-8 sm:p-16rounded-2xl">
         <div className="flex flex-col lg:flex-row">
           <div className="lg:mb-0 lg:w-1/2 lg:pr-5 mb-6  lg:text-right text-center">
-            <div>
-              <p className="block t  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
+            <div className=" bg-white ">
+              <p className="block t  font-bold tracking-tight text-gray-900 leading-6 text-2xl  sm:text-3xl">
                 کلمه ، شعر و ...
               </p>
-              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
+              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6 text-2xl  sm:text-3xl">
                 موضوع پانتومیم جالب
               </p>
-              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6  sm:text-3xl">
+              <p className="block  pt-6  font-bold tracking-tight text-gray-900 leading-6 text-2xl  sm:text-3xl">
                 و سرگرم کننده
               </p>
               <p
-                className="block pt-5 font-bold tracking-tight  sm:text-3xl
+                className="block pt-5 font-bold tracking-tight  text-2xl  sm:text-3xl
               sm:leading-none"
               >
                 پیدا کن
               </p>
             </div>
           </div>
-          <div className="lg:w-1/2 ">
+          <div className="lg:w-1/2  bg-white ">
             <p className="mb-4 text-lg text-right text-gray-700">
               پانتومیم یکی از بازی های جالب برای دورهمی ها است. جملات و کلمات
               موضوع اصلی پانتومیم هستند و یکی از روش های خوب برای افزایش خلاقیت

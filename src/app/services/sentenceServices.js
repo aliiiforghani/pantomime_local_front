@@ -9,13 +9,13 @@ export function getHardship() {
 }
 
 export function getRandomSentence(data) {
-  return http.post("/sentence/random", data).then(({ data }) => data.data.result);
+  return http
+    .post("/sentence/random", data)
+    .then(({ data }) => data.data.result);
 }
 
 export function getAllSentence(data) {
-  return http
-    .post("/sentence/all", data)
-    .then(({ data }) => data.data);
+  return http.post("/sentence/all", data).then(({ data }) => data.data);
 }
 
 export function addCategory() {
@@ -26,10 +26,9 @@ export function addHardship(data) {
   return http.patch("/hardship/add", data).then(({ data }) => data.data);
 }
 
-
 export function addSentenceByAdmin() {
   return http.post("/sentence/admin/add").then(({ data }) => data.data);
 }
 export function addSentenceByUser(data) {
-  return http.post("/sentence/add",data).then(({ data }) => data.data);
+  return http.post("/sentence/add", data).then(({ data }) => data.data);
 }

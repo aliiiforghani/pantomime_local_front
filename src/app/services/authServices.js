@@ -19,7 +19,7 @@ export function completeProfile(data) {
 }
 
 export function getUserProfile() {
-  return http.get("/").then(({ data }) => data.data);
+  return http.post("/").then(({ data }) => data.data);
 }
 
 export function updateProfile(data) {

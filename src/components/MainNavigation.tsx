@@ -10,7 +10,7 @@ const MainNavigation = () => {
 
   let { user } = data || {};
 
-  if (user) localStorage.setItem("user", JSON.stringify(user));
+  // if (user) localStorage.setItem("user", JSON.stringify(user));
 
   const logOutHandler = () => {
     async function logOutFunction() {
